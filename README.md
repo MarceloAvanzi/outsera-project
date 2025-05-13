@@ -1,6 +1,6 @@
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript Outsera Project.
+[Nest](https://github.com/nestjs/nest) framework TypeScript for Outsera Test Project.
 
 ## Project installation
 
@@ -22,8 +22,11 @@ $ yarn run start:dev
 ## Run tests
 
 ```bash
-
+# development
 $ yarn test
+
+watch mode
+$ yarn test:watch
 
 ```
 
