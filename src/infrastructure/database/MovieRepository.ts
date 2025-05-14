@@ -21,22 +21,6 @@ export default class MovieRepository implements MovieData {
     });
   }
 
-  async findAll(): Promise<Movie[]> {
-    return new Promise((resolve, reject) => {
-      this.db.all('SELECT * FROM movies', (err, rows) => {
-        if (err) return reject(err);
-
-        resolve(rows.map((row: Movie) => new Movie(
-          row.year,
-          row.title,
-          row.studios,
-          row.producers,
-          row.winner 
-        )));
-      });
-    });
-  }
-
   getWinners(): Promise<Movie[]> {
     return new Promise((resolve, reject) => {
       this.db.all("SELECT * FROM movies WHERE winner = 'yes'", (err, rows) => {

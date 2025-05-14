@@ -4,6 +4,5 @@ export const MOVIE_DATA = Symbol('MOVIE_DATA');
 
 export default interface MovieData {
   create(movie: Movie): Promise<Movie>;
-  findAll(): Promise<Movie[]>;
   getWinners(): Promise<Movie[]>;
 }

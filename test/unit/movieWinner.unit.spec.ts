@@ -9,7 +9,6 @@ describe('tests with mock data', () => {
   beforeEach(() => {
     movieRepositoryMock = {
       create: jest.fn(),
-      findAll: jest.fn(),
       getWinners: jest.fn(),
     };
     movieWinnerInterval = new MovieWinnerInterval(movieRepositoryMock);
