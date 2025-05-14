@@ -1,14 +1,18 @@
-import { Controller, Get } from "@nestjs/common";
-import MovieWinner from "src/application/MovieWinner";
+import { Controller, Get, HttpException, HttpStatus } from '@nestjs/common';
+import MovieWinnerInterval from 'src/application/MovieWinnerInterval';
 
-@Controller('movie')
+@Controller('movies')
 export default class MovieController {
-  constructor(readonly movieWinner: MovieWinner){}
+  constructor(private readonly movieWinnerInterval: MovieWinnerInterval) {}
 
-  @Get()
-  async getMovieWinner() {
-    const movies = await this.movieWinner.execute();
-    return movies;
+  @Get('intervals')
+  async getMovieWinnerInterval() {
+    try {
+      const movies = await this.movieWinnerInterval.execute();
+       
+      return movies;
+    } catch (error) {
+      throw new HttpException(`Failed to fetch movies: ${error.message}`, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
   }
-
 }
